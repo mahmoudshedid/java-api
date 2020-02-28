@@ -37,7 +37,7 @@ public class CityInitializeServiceImpl implements CityInitializeService
         ObjectMapper mapper = new ObjectMapper();
 
         InputStream inputStream = TypeReference.class.getResourceAsStream(jsonString);
-        List<CityInitialize> listCities = mapper.readValue(inputStream, new TypeReference<List<CityInitialize>>(){});
+        List<CityInitialize> listCities = mapper.readValue(inputStream, new TypeReference<List<CityInitialize>>() {});
 
         CityInitialize cityInitialize = new CityInitialize();
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());

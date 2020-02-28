@@ -1,5 +1,6 @@
 package com.shedid.api.Region.Model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -23,8 +24,13 @@ import com.shedid.api.User.Model.User;
  */
 @Entity
 @Table(name = "countries")
-public class Country
+public class Country implements Serializable
 {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -144,10 +150,9 @@ public class Country
     @Override
     public String toString()
     {
-        return "{" + " id='" + getId() + "'" + ", sortName='" + getSortName() + "'" + ", name='" + getName() + "'"
-                    + ", phoneCode='" + getPhoneCode() + "'" + ", createdBy='" + getCreatedBy() + "'" + ", modifiedBy='"
-                    + getModifiedBy() + "'" + ", createdAt='" + getCreatedAt() + "'" + ", updatedAt='" + getUpdatedAt()
-                    + "'" + "}";
+        return "{" + " id='" + getId() + "'" + ", sortName='" + getSortName() + "'" + ", name='" + getName() + "'" + ", phoneCode='" + getPhoneCode()
+                + "'" + ", createdBy='" + getCreatedBy() + "'" + ", modifiedBy='" + getModifiedBy() + "'" + ", createdAt='" + getCreatedAt() + "'"
+                + ", updatedAt='" + getUpdatedAt() + "'" + "}";
     }
 
 }

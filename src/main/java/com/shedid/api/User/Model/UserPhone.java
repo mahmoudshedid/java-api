@@ -1,5 +1,6 @@
 package com.shedid.api.User.Model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -26,8 +27,13 @@ import org.hibernate.validator.constraints.Length;
  */
 @Entity
 @Table(name = "user_phones")
-public class UserPhone
+public class UserPhone implements Serializable
 {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

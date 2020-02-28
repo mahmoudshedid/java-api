@@ -25,4 +25,10 @@ public class CountryServiceImpl implements CountryService
     {
         repository.save(Country);
     }
+
+    @Override
+    public long count()
+    {
+        return repository.count();
+    }
 }

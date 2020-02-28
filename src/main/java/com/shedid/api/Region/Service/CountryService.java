@@ -8,4 +8,6 @@ import com.shedid.api.Region.Model.Country;
 public interface CountryService
 {
     void saveCountry(Country country);
+
+    long count();
 }

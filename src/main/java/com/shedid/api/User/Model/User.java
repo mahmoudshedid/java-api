@@ -1,5 +1,6 @@
 package com.shedid.api.User.Model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -33,12 +34,16 @@ import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "users")
-public class User
+public class User implements Serializable
 {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", columnDefinition = "INT(11)")
     private long id;
 
     @NotNull

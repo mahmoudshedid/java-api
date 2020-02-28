@@ -7,6 +7,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -14,8 +15,13 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "cities")
-public class CityInitialize
+public class CityInitialize implements Serializable
 {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
     @Id
     @Column(name = "id")
@@ -88,8 +94,8 @@ public class CityInitialize
     @Override
     public String toString()
     {
-        return "{" + " id='" + getId() + "'" + ", name='" + getName() + "'" + ", stateId='" + getStateId() + "'"
-                    + ", createdAt='" + getCreatedAt() + "'" + ", updatedAt='" + getUpdatedAt() + "'" + "}";
+        return "{" + " id='" + getId() + "'" + ", name='" + getName() + "'" + ", stateId='" + getStateId() + "'" + ", createdAt='" + getCreatedAt()
+                + "'" + ", updatedAt='" + getUpdatedAt() + "'" + "}";
     }
 
 }

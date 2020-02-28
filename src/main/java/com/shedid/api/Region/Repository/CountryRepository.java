@@ -8,6 +8,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * CountryRepository
  */
 public interface CountryRepository extends JpaRepository<Country, Long>
-{
-
-}
+{}

@@ -1,5 +1,6 @@
 package com.shedid.api.Category.Model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -27,12 +28,13 @@ import org.hibernate.annotations.OnDeleteAction;
  */
 @Entity
 @Table(name = "categories")
-public class Category
+public class Category implements Serializable
 {
+
+    private static final long serialVersionUID = -2343243243242432341L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", columnDefinition = "INT(11)")
     private long id;
 
     @NotNull

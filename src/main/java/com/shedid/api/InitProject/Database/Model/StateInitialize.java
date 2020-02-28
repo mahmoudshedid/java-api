@@ -1,5 +1,6 @@
 package com.shedid.api.InitProject.Database.Model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -14,8 +15,13 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "states")
-public class StateInitialize
+public class StateInitialize implements Serializable
 {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
     @Id
     @Column(name = "id")
     private long id;
@@ -87,8 +93,8 @@ public class StateInitialize
     @Override
     public String toString()
     {
-        return "{" + " id='" + getId() + "'" + ", name='" + getName() + "'" + ", countryId='" + getCountryId() + "'"
-                    + ", createdAt='" + getCreatedAt() + "'" + ", updatedAt='" + getUpdatedAt() + "'" + "}";
+        return "{" + " id='" + getId() + "'" + ", name='" + getName() + "'" + ", countryId='" + getCountryId() + "'" + ", createdAt='"
+                + getCreatedAt() + "'" + ", updatedAt='" + getUpdatedAt() + "'" + "}";
     }
 
 }

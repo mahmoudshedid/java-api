@@ -8,6 +8,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * CityInitializeRepository
  */
 public interface CityInitializeRepository extends JpaRepository<CityInitialize, Long>
-{
-
-}
+{}
