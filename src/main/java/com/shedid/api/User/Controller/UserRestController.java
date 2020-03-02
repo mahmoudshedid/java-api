@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * UserRestController
  */
 @RestController
+@RequestMapping("/users")
 public class UserRestController
 {
 
@@ -27,17 +28,16 @@ public class UserRestController
         this.service = service;
     }
 
-    @RequestMapping(value = "user/get/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     public User getUserById(@PathVariable("id") long id)
     {
         return service.findUserById(id);
     }
 
-    @RequestMapping(value = "user/new", method = RequestMethod.POST)
+    @RequestMapping(value = "/add-new", method = RequestMethod.POST)
     public User postCreateUser(@Valid @RequestBody User user)
     {
         this.service.createUser(user);
         return user;
     }
-
 }

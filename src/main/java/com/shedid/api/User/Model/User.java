@@ -76,7 +76,7 @@ public class User implements Serializable
     @Column(name = "password")
     @Length(groups = UsersValidation.UserPasswordValidation.class, min = 5, message = "● Your password must have at least 5 characters")
     @NotEmpty(groups = UsersValidation.UserPasswordValidation.class, message = "● Please provide your password")
-    @JsonIgnore
+    // @JsonIgnore
     private String password;
 
     @Valid
