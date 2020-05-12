@@ -37,7 +37,7 @@
 		<dependency>
 			<groupId>org.springframework.security.oauth</groupId>
 			<artifactId>spring-security-oauth2</artifactId>
-			<version>2.3.3.RELEASE</version>
+			<version>2.3.5.RELEASE</version>
 		</dependency>
 
 		<dependency>
@@ -115,13 +115,6 @@
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
-		</profile>
-		<profile>
-			<id>prod</id>
-			<properties>
-				<activatedProperties>prod</activatedProperties>
-				<start-class>com.shedid.api.DatabaseInitializer</start-class>
-			</properties>
 		</profile>
 	</profiles>
 

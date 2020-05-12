@@ -30,9 +30,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 @Service("databaseExistService")
 public class DatabaseExistServiceImpl implements DatabaseExistService
 {
-    private CountryService countryService;
-    private StateService stateService;
-    private CityService cityService;
+    private final CountryService countryService;
+    private final StateService stateService;
+    private final CityService cityService;
 
     @Autowired
     public DatabaseExistServiceImpl(CountryService countryService, StateService stateService, CityService cityService)
@@ -76,8 +76,7 @@ public class DatabaseExistServiceImpl implements DatabaseExistService
 
         long countCountry = countryService.count();
 
-        if (listCountries.size() == countCountry) return true;
-        else return false;
+        return listCountries.size() == countCountry;
     }
 
     @Override
@@ -88,8 +87,7 @@ public class DatabaseExistServiceImpl implements DatabaseExistService
         InputStream inputStream = TypeReference.class.getResourceAsStream(fileUrl);
         List<StateInitialize> listStates = mapper.readValue(inputStream, new TypeReference<List<StateInitialize>>() {});
 
-        if (listStates.size() == stateService.count()) return true;
-        else return false;
+        return listStates.size() == stateService.count();
     }
 
     @Override
@@ -100,7 +98,6 @@ public class DatabaseExistServiceImpl implements DatabaseExistService
         InputStream inputStream = TypeReference.class.getResourceAsStream(fileUrl);
         List<CityInitialize> listCities = mapper.readValue(inputStream, new TypeReference<List<CityInitialize>>() {});
 
-        if (listCities.size() == cityService.count()) return true;
-        else return false;
+        return listCities.size() == cityService.count();
     }
 }
