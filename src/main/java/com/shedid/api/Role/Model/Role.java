@@ -1,7 +1,4 @@
-package com.shedid.api.User.Model;
-
-import java.io.Serializable;
-import java.util.Date;
+package com.shedid.api.Role.Model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,17 +11,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.shedid.api.User.Model.User;
+import org.springframework.lang.Nullable;
 
-import org.springframework.lang.NonNull;
+import java.io.Serializable;
+import java.util.Date;
 
 /**
- * Gender
+ * Role
  */
 @Entity
-@Table(name = "genders")
-public class Gender implements Serializable
+@Table(name = "roles")
+public class Role implements Serializable
 {
 
     /**
@@ -34,19 +35,28 @@ public class Gender implements Serializable
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id",columnDefinition = "serial")
     private int id;
 
-    @NonNull
-    @Column(name = "type")
-    private String type;
+    @Column(name = "role")
+    @NotNull(message = "● Please provide user role.")
+    private String role;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "created_by")
+    @NotNull
+    @Column(name = "enabled")
+    private boolean enabled;
+
+    @NotNull
+    @Column(name = "trashed")
+    private boolean trashed;
+
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
+    @JoinColumn(columnDefinition="integer", name = "created_by", nullable = true)
     @JsonIgnore
     private User createdBy;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "modified_by")
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
+    @JoinColumn(columnDefinition="integer", name = "modified_by", nullable = true)
     @JsonIgnore
     private User modifiedBy;
 
@@ -68,14 +78,44 @@ public class Gender implements Serializable
         this.id = id;
     }
 
-    public String getType()
+    public String getRole()
     {
-        return this.type;
+        return this.role;
     }
 
-    public void setType(String type)
+    public void setRole(String role)
     {
-        this.type = type;
+        this.role = role;
+    }
+
+    public boolean isEnabled()
+    {
+        return this.enabled;
+    }
+
+    public boolean getEnabled()
+    {
+        return this.enabled;
+    }
+
+    public void setEnabled(boolean enabled)
+    {
+        this.enabled = enabled;
+    }
+
+    public boolean isTrashed()
+    {
+        return this.trashed;
+    }
+
+    public boolean getTrashed()
+    {
+        return this.trashed;
+    }
+
+    public void setTrashed(boolean trashed)
+    {
+        this.trashed = trashed;
     }
 
     public User getCreatedBy()

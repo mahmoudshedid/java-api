@@ -31,10 +31,11 @@ import org.hibernate.annotations.OnDeleteAction;
 public class Category implements Serializable
 {
 
-    private static final long serialVersionUID = -2343243243242432341L;
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id",columnDefinition = "serial")
     private long id;
 
     @NotNull

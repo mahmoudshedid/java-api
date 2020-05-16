@@ -10,5 +10,5 @@ import com.fasterxml.jackson.databind.JsonMappingException;
  */
 public interface StateInitializeService
 {
-    void stateInitialize(String jsonString) throws JsonParseException, JsonMappingException, IOException, InterruptedException;
+    void stateInitialize(String jsonString, long userId) throws JsonParseException, JsonMappingException, IOException, InterruptedException;
 }

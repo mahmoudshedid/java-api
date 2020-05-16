@@ -37,7 +37,7 @@ public class UserPhone implements Serializable
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "id",columnDefinition = "serial")
     private long id;
 
     @Column(name = "type")

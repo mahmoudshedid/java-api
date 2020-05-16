@@ -35,7 +35,7 @@ public class CountryInitializeServiceImpl implements CountryInitializeService
     }
 
     @Override
-    public void countryInitialize(String jsonString) throws JsonParseException, JsonMappingException, IOException, InterruptedException
+    public void countryInitialize(String jsonString, long userId) throws JsonParseException, JsonMappingException, IOException, InterruptedException
     {
         ObjectMapper mapper = new ObjectMapper();
 
@@ -46,6 +46,8 @@ public class CountryInitializeServiceImpl implements CountryInitializeService
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         for (CountryInitialize country : listCountries) {
             countryInitialize.setId(country.getId());
+            countryInitialize.setCreatedBy(userId);
+            countryInitialize.setModifiedBy(userId);
             countryInitialize.setName(country.getName());
             countryInitialize.setSortName(country.getSortName());
             countryInitialize.setPhoneCode(country.getPhoneCode());

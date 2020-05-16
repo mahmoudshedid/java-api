@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
 @Service("stateInitializeService")
 public class StateInitializeServiceImpl implements StateInitializeService
 {
-    private StateInitializeRepository repository;
+    private final StateInitializeRepository repository;
 
     @Autowired
     public StateInitializeServiceImpl(StateInitializeRepository repository)
@@ -31,7 +31,7 @@ public class StateInitializeServiceImpl implements StateInitializeService
     }
 
     @Override
-    public void stateInitialize(String jsonString) throws JsonParseException, JsonMappingException, IOException, InterruptedException
+    public void stateInitialize(String jsonString, long userId) throws JsonParseException, JsonMappingException, IOException, InterruptedException
     {
         ObjectMapper mapper = new ObjectMapper();
 
@@ -44,6 +44,8 @@ public class StateInitializeServiceImpl implements StateInitializeService
             stateInitialize.setId(state.getId());
             stateInitialize.setName(state.getName());
             stateInitialize.setCountryId(state.getCountryId());
+            stateInitialize.setCreatedBy(userId);
+            stateInitialize.setModifiedBy(userId);
             stateInitialize.setCreatedAt(timestamp);
             stateInitialize.setUpdatedAt(timestamp);
 

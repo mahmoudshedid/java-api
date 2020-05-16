@@ -34,7 +34,7 @@ public class City implements Serializable
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "id",columnDefinition = "serial")
     private int id;
 
     @NotNull

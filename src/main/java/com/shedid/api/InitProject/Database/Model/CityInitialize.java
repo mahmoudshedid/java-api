@@ -33,6 +33,12 @@ public class CityInitialize implements Serializable
     @Column(name = "state_id")
     private long stateId;
 
+    @Column(name = "created_by")
+    private long createdBy;
+
+    @Column(name = "modified_by")
+    private long modifiedBy;
+
     @Column(name = "created_at", nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
@@ -69,6 +75,22 @@ public class CityInitialize implements Serializable
     public void setStateId(long stateId)
     {
         this.stateId = stateId;
+    }
+
+    public long getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(long createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public long getModifiedBy() {
+        return modifiedBy;
+    }
+
+    public void setModifiedBy(long modifiedBy) {
+        this.modifiedBy = modifiedBy;
     }
 
     public Date getCreatedAt()

@@ -9,7 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import com.shedid.api.User.Dao.UserDao;
@@ -36,7 +36,7 @@ public class NormalUserServiceImpl implements UserDetailsService, NormalUserServ
 
     private List<SimpleGrantedAuthority> getAuthority()
     {
-        return Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_ADMIN"));
     }
 
     public List<NormalUser> findAll()

@@ -10,5 +10,5 @@ import com.fasterxml.jackson.databind.JsonMappingException;
  */
 public interface CityInitializeService
 {
-    void cityInitialize(String jsonString) throws JsonParseException, JsonMappingException, IOException, InterruptedException;
+    void cityInitialize(String jsonString, long userId) throws JsonParseException, JsonMappingException, IOException, InterruptedException;
 }

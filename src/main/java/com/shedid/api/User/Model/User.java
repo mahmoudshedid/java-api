@@ -28,6 +28,8 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.shedid.api.Gender.Model.Gender;
+import com.shedid.api.Role.Model.Role;
 import com.shedid.api.User.Group.UsersValidation;
 
 import org.hibernate.validator.constraints.Length;
@@ -44,6 +46,7 @@ public class User implements Serializable
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", columnDefinition = "serial")
     private long id;
 
     @NotNull
@@ -92,23 +95,22 @@ public class User implements Serializable
     @Column(name = "trashed")
     private boolean trashed;
 
-    @NotNull
     @Size(max = 100)
-    @Column(name = "image_url")
+    @Column(name = "image_url", nullable = true)
     private String imageUrl;
 
     @NotNull(groups = UsersValidation.UserValidation.class, message = "● Please provide user roles.")
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany()
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "created_by")
+    @JoinColumn(columnDefinition="integer", name = "created_by", nullable = true)
     @JsonIgnore
     private User createdBy;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "modified_by")
+    @JoinColumn(columnDefinition="integer", name = "modified_by", nullable = true)
     @JsonIgnore
     private User modifiedBy;
 

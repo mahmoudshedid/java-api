@@ -36,6 +36,12 @@ public class CountryInitialize implements Serializable
     @Column(name = "phone_code")
     private int phoneCode;
 
+    @Column(name = "created_by")
+    private long createdBy;
+
+    @Column(name = "modified_by")
+    private long modifiedBy;
+
     @Column(name = "created_at", nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
@@ -82,6 +88,22 @@ public class CountryInitialize implements Serializable
     public void setPhoneCode(int phoneCode)
     {
         this.phoneCode = phoneCode;
+    }
+
+    public long getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(long createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public long getModifiedBy() {
+        return modifiedBy;
+    }
+
+    public void setModifiedBy(long modifiedBy) {
+        this.modifiedBy = modifiedBy;
     }
 
     public Date getCreatedAt()

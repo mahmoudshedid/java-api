@@ -20,6 +20,7 @@ public class NormalUser implements Serializable
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id",columnDefinition = "serial")
     private long id;
 
     @Column

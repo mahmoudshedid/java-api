@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shedid.api.InitProject.Database.Model.CityInitialize;
 import com.shedid.api.InitProject.Database.Repository.CityInitializeRepository;
 
+import com.shedid.api.Region.Model.City;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -23,7 +24,7 @@ import java.sql.Timestamp;
 @Service("cityInitializeService")
 public class CityInitializeServiceImpl implements CityInitializeService
 {
-    private CityInitializeRepository repository;
+    private final CityInitializeRepository repository;
 
     @Autowired
     public CityInitializeServiceImpl(CityInitializeRepository repository)
@@ -32,7 +33,7 @@ public class CityInitializeServiceImpl implements CityInitializeService
     }
 
     @Override
-    public void cityInitialize(String jsonString) throws JsonParseException, JsonMappingException, IOException, InterruptedException
+    public void cityInitialize(String jsonString, long userId) throws JsonParseException, JsonMappingException, IOException, InterruptedException
     {
         ObjectMapper mapper = new ObjectMapper();
 
@@ -45,6 +46,8 @@ public class CityInitializeServiceImpl implements CityInitializeService
             cityInitialize.setId(city.getId());
             cityInitialize.setName(city.getName());
             cityInitialize.setStateId(city.getStateId());
+            cityInitialize.setCreatedBy(userId);
+            cityInitialize.setModifiedBy(userId);
             cityInitialize.setCreatedAt(timestamp);
             cityInitialize.setUpdatedAt(timestamp);
 
